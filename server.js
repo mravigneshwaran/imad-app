@@ -77,6 +77,13 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+//adding counter
+var counter=0; 
+app.get('/counter', function(req,res){
+   counter = counter + 1;
+   res.send(counter.toString());
+});
+
 app.get('/:articalName', function(req,res){
     //articleName ==article-one
     //articles[articalName]=={}content object for articles one
