@@ -5,27 +5,49 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleOne = {
-    title:'Article One | vignesh',
-    heading:'Aritcle One',
-    date:'Sep 9, 2018',
-    content:` <p>This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle
-            </p>
-            <p>This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle
-            </p>
-            <p>This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle
-            </p>`
+var articles={
+    'article-one':{
+        title:'Article One | vignesh',
+        heading:'Aritcle One',
+        date:'Sep 9, 2018',
+        content:` <p>This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle
+                </p>
+                <p>This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle
+                </p>
+                <p>This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle
+                </p>`
+        },
+    'article-two':{
+            title:'Article Two | vignesh',
+            heading:'Aritcle Three',
+            date:'Sep 9, 2018',
+            content:`
+                    <p>This is my Second aritcle 
+                    </p>`
+        },
+    'article-three':{
+                title:'Article Three | vignesh',
+                heading:'Aritcle Three',
+                date:'Sep 9, 2018',
+                content:` 
+                <p>This is my Third aritcle</p>`
+    }
+                
 };
+        
 
-function createTemplate(data){
+function createTemplate (data) {
     var title = data.title;
     var date = data.date;
     var heading = data.heading;
     var content = data.content;
+    
     var htmlTemplate=`
     <html>
     <head>
+    <title>
         ${title}
+     </title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link href="/ui/style.css" rel="stylesheet" />
     </head>
@@ -55,17 +77,14 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one', function(req,res){
-    res.send(createTemplate(articleOne));
+app.get('/:articleName', function(req,res){
+    //articleName ==article-one
+    //articles[articalName]=={}content object for articles one
+    //extract article name
+    var articleName = req.params.articleName;
+    res.send(createTemplate(articles[articalName]));
 });
 
-app.get('/article-two',function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
-
-app.get('/article-three',function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
-});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
