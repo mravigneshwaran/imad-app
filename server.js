@@ -43,7 +43,7 @@ function createTemplate (data) {
     var date = data.date;
     var heading = data.heading;
     var content = data.content;
-    var inputbox = data.inputbox
+    var inputbox = data.inputbox;
     
     var htmlTemplate=`
     <html>
