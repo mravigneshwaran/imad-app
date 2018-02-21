@@ -22,6 +22,7 @@ button.onclick = function(){
     };
     
     //Make the request
+    counter = counter + 1;
     request.open('GET','http://mravigneshwaran.imad.hasura-app.io/counter',true);
     request.send(null);
     
