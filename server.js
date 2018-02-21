@@ -15,7 +15,9 @@ var articles={
                 <p>This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle
                 </p>
                 <p>This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle This is my first aritcle
-                </p>`
+                </p>
+                
+                <input type="submit id="submit_btn value="submit>`
         },
     'article-two':{
             title:'Article Two | vignesh',
@@ -41,6 +43,7 @@ function createTemplate (data) {
     var date = data.date;
     var heading = data.heading;
     var content = data.content;
+    var inputbox = data.inputbox
     
     var htmlTemplate=`
     <html>
@@ -65,6 +68,9 @@ function createTemplate (data) {
     </div>
     <div>
         ${content}
+    </div>
+    <div>
+        ${inputbox}
     </div>
     </div>
     </body>
