@@ -122,7 +122,7 @@ app.post('/create-user',function(req,res){
    });
 });
 
-var pool = new pool(config);
+var Pool = new Pool(config);
 //make db
 app.get('/test-db',function(req,res){
     //make a select request
